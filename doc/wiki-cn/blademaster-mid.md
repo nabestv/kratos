@@ -105,8 +105,8 @@ e.Start()
 
 # Extended reading
 
-[bm quick start] (blademaster-quickstart.md) [bm module description] (blademaster-mod.md) [bm based on pb generation] (blademaster-pb.md)
+[bm quick start](blademaster-quickstart.md) [bm module description](blademaster-mod.md) [bm based on pb generation](blademaster-pb.md)
 
 -------------
 
-[document directory tree] (summary.md)
+[document directory tree](summary.md)

@@ -80,8 +80,8 @@ Some middleware also wants to execute some logic after all Handlers have been ex
 
 # Extended reading
 
-[bm quick start] (blademaster-quickstart.md) [bm middleware] (blademaster-mid.md) [bm based on pb generation] (blademaster-pb.md)
+[bm quick start](blademaster-quickstart.md) [bm middleware](blademaster-mid.md) [bm based on pb generation](blademaster-pb.md)
 
 -------------
 
-[document directory tree] (summary.md)
+[document directory tree](summary.md)

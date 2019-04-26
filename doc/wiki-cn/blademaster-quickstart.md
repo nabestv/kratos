@@ -1,6 +1,6 @@
 # Ready to work
 
-It is recommended to use [kratos tool] (kratos-tool.md) to quickly generate projects, such as we generate a project called `kratos-demo`.
+It is recommended to use [kratos tool](kratos-tool.md) to quickly generate projects, such as we generate a project called `kratos-demo`.
 
 The generated directory structure is as follows:
 ```
@@ -61,8 +61,8 @@ Func howToStart(c *bm.Context) // The handler method passes the bm Context objec
 
 # Extended reading
 
-[bm module description] (blademaster-mod.md) [bm middleware] (blademaster-mid.md) [bm based on pb generation] (blademaster-pb.md)
+[bm module description](blademaster-mod.md) [bm middleware](blademaster-mid.md) [bm based on pb generation](blademaster-pb.md)
 
 -------------
 
-[document directory tree] (summary.md)
+[document directory tree](summary.md)

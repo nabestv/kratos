@@ -34,8 +34,8 @@ The process of request processing can also use Render to assist in rendering Res
 
 # Extended reading
 
-[bm quick start] (blademaster-quickstart.md) [bm module description] (blademaster-mod.md) [bm middleware] (blademaster-mid.md) [bm based on pb generation] (blademaster-pb.md)
+[bm quick start](blademaster-quickstart.md) [bm module description](blademaster-mod.md) [bm middleware](blademaster-mid.md) [bm based on pb generation](blademaster-pb.md)
 
 -------------
 
-[document directory tree] (summary.md)
+[document directory tree](summary.md)

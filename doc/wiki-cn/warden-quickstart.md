@@ -1,8 +1,8 @@
 # Ready to work
 
-It is recommended to use [kratos tool] (kratos-tool.md) to quickly generate projects, such as we generate a project called `kratos-demo`.
+It is recommended to use [kratos tool](kratos-tool.md) to quickly generate projects, such as we generate a project called `kratos-demo`.
 
-[Quick Start] (quickstart.md)
+[Quick Start](quickstart.md)
 
 # Pb file
 
@@ -151,8 +151,8 @@ So in the `internal/service` layer you can make resource method calls.
 
 # Extended reading
 
-[warden interceptor] (warden-mid.md) [warden based on pb generation] (warden-pb.md) [warden service discovery] (warden-resolver.md) [warden load balancing] (warden-balancer.md)
+[warden interceptor](warden-mid.md) [warden based on pb generation](warden-pb.md) [warden service discovery](warden-resolver.md) [warden load balancing](warden-balancer.md)
 
 -------------
 
-[document directory tree] (summary.md)
+[document directory tree](summary.md)
