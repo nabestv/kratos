@@ -44,8 +44,8 @@ Follow the prompts to quickly create a project, such as [kratos-demo](https://gi
 Once generated, it can be run directly as follows:
 
 ```shell
-Cd kratos-demo/cmd
-Go build
+cd kratos-demo/cmd
+go build
 ./cmd -conf ../configs
 ```
 
