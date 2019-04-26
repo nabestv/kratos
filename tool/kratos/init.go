@@ -12,8 +12,8 @@ import (
 )
 
 const (
-	_textModeFastInit    = "One-click initialization project"
-	_textModeInteraction = "Custom project parameters"
+	_textModeFastInit    = "Quick build"
+	_textModeInteraction = "Custom build"
 	_textYes             = "Yes"
 	_textNo              = "No"
 )
@@ -82,7 +82,7 @@ func goPath() (gp string) {
 
 func interact() (err error) {
 	qs1 := &survey.Select{
-		Message: "How would you like to play?",
+		Message: "Please choose type of build?",
 		Options: []string{_textModeFastInit, _textModeInteraction},
 	}
 	var ans1 string
