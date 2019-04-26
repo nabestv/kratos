@@ -12,7 +12,7 @@ Kratos is an open source set of Go microservices framework [bilibili](https://ww
 
 We are committed to providing a complete microservices R&D experience. After integrating the relevant frameworks and tools, the relevant parts of the microservices management can be focused on the overall business development cycle, thus focusing more on business delivery. For each developer, the entire Kratos framework is also a good learning repository for understanding and reference to [bilibili](https://www.bilibili.com) technology accumulation and experience in microservices.
 
-# Start soon
+# Quick Start
 
 ```shell
 Go get -u github.com/bilibili/kratos/tool/kratos
