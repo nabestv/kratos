@@ -33,7 +33,7 @@ Open your browser and visit: [http://localhost:8000/kratos-demo/start](http://lo
 
 # Document
 
-[Simplified Chinese](doc/wiki-cn/summary.md)
+[Summary](doc/wiki-cn/summary.md)
 
 -------------
 
