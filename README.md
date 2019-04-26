@@ -15,15 +15,15 @@ We are committed to providing a complete microservices R&D experience. After int
 # Quick Start
 
 ```shell
-Go get -u github.com/bilibili/kratos/tool/kratos
-Kratos init
+go get -u github.com/bilibili/kratos/tool/kratos
+kratos init
 ```
 
 `kratos init` will quickly generate scaffolding code based on the Kratos library, such as generating [kratos-demo](https://github.com/bilibili/kratos-demo)
 
 ```shell
-Cd kratos-demo/cmd
-Go build
+cd kratos-demo/cmd
+go build
 ./cmd -conf ../configs
 ```
 
