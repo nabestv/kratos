@@ -1,4 +1,4 @@
-# background
+# Background
 
 In a distributed architecture like microservices, there are often requirements that require you to call multiple services, but you also need to ensure that the service is secure, that each request logs are traversed, or that the user's complete behavior is tracked. To implement these features, you may need to set some of the same properties in all services, although this can be defined by some explicit access documentation or access specifications, but there are still some issues with this:
 
