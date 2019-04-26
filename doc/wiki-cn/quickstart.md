@@ -1,4 +1,4 @@
-# Start soon
+# Quick Start
 
 To quickly use the kratos project, you can use the `kratos tool` as follows:
 
