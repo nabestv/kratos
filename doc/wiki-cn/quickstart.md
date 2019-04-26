@@ -57,4 +57,4 @@ Open your browser and visit: [http://localhost:8000/kratos-demo/start](http://lo
 
 -------------
 
-[document directory tre](summary.md)
+[document directory tree](summary.md)

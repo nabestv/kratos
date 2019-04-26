@@ -1,4 +1,4 @@
-# background
+# Background
 
 Based on the bm-based handler mechanism, you can customize many middleware (middleware) for general-purpose business processing, such as user login authentication. Next, take authentication as an example to illustrate the writing and usage of middleware.
 
@@ -52,7 +52,7 @@ e.GET("/path", myHandler)
 ```
 
 
-#Global middleware
+# Global middleware
 
 In the blademaster's `server.go` code, there is the following code:
 
@@ -72,9 +72,9 @@ If you want to register your custom middleware into the global, you can continue
 engine.Use(YourMiddleware())
 ```
 
-This method will be executed after appending <YourMiddleware` to the existing global middleware.
+This method will be executed after appending <YourMiddleware> to the existing global middleware.
 
-#Local middleware
+# Local middleware
 
 Let's look at an example (code under pkg/net/http/blademaster/middleware/auth module):
 
