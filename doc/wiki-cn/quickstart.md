@@ -3,7 +3,7 @@
 To quickly use the kratos project, you can use the `kratos tool` as follows:
 
 ```shell
-Go get -u github.com/bilibili/kratos/tool/kratos
+go get -u github.com/bilibili/kratos/tool/kratos
 kratos init
 ```
 Follow the prompts to quickly create a project, such as [kratos-demo](https://github.com/bilibili/kratos-demo) which is created by the tool. The directory structure is as follows:
