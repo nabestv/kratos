@@ -1,5 +1,5 @@
 # prom
 
-## 项目简介
+## Project Description
 
-封装prometheus类。TODO：补充grafana通用面板json文件！！！
+Encapsulate the prometheus class. TODO: Supplement gaffana universal panel json file! ! !

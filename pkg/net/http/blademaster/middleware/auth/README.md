@@ -1,7 +1,7 @@
 #### blademaster/middleware/auth
 
-##### 项目简介
+##### Project Description
 
-blademaster 的 authorization middleware，主要用于设置路由的认证策略
+The authorization middleware of the blademaster is used to set the authentication policy of the route.
 
-注：仅仅是个demo，请根据自身业务实现具体鉴权逻辑
+Note: Just a demo, please implement specific authentication logic according to your own business.

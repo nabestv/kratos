@@ -1,63 +1,63 @@
 // Package dsn implements dsn parse with struct bind
 /*
-DSN 格式类似 URI, DSN 结构如下图
+The DSN format is similar to a URI, and the DSN structure is as follows.
 
-	network:[//[username[:password]@]address[:port][,address[:port]]][/path][?query][#fragment]
+Network:[//[username[:password]@]address[:port][,address[:port]]][/path][?query][#fragment]
 
-与 URI 的主要区别在于 scheme 被替换为 network, host 被替换为 address 并且支持多个 address.
-network 与 net 包中 network 意义相同, tcp、udp、unix 等, address 支持多个使用 ',' 分割, 如果
-network 为 unix 等本地 sock 协议则使用 Path, 有且只有一个
+The main difference from URI is that scheme is replaced by network, host is replaced with address and supports multiple addresses.
+Network has the same meaning as network in net package, tcp, udp, unix, etc., address supports multiple use ',' split, if
+Network is a local sock protocol such as unix, using Path, there is only one
 
-dsn 包主要提供了 Parse, Bind 和 validate 功能
+The dsn package mainly provides Parse, Bind and validate functions.
 
-Parse 解析 dsn 字符串成 DSN struct, DSN struct 与 url.URL 几乎完全一样
+Parse parses the dsn string into a DSN struct, and the DSN struct is almost identical to the url.URL
 
-Bind 提供将 DSN 数据绑定到一个 struct 的功能, 通过 tag dsn:"key,[default]" 指定绑定的字段, 目前支持两种类型的数据绑定
+Bind provides the ability to bind DSN data to a struct, specifying the bound fields via tag dsn:"key,[default]", currently supports two types of data binding
 
-内置变量 key:
-	network string tcp, udp, unix 等, 参考 net 包中的 network
-	username string
-	password string
-	address string or []string address 可以绑定到 string 或者 []string, 如果为 string 则取 address 第一个
+Built-in variable key:
+Network string tcp, udp, unix, etc., refer to the network in the net package
+Username string
+Password string
+Address string or []string address can be bound to string or []string, if string then take address first
 
-Query: 通过 query.name 可以取到 query 上的数据
+Query: The data on the query can be retrieved by query.name
 
-	数组可以通过传递多个获得
+Arrays can be obtained by passing multiple
 
-	array=1&array=2&array3 -> []int `tag:"query.array"`
+Array=1&array=2&array3 -> []int `tag:"query.array"`
 
-	struct 支持嵌套
+Struct support nesting
 
-	foo.sub.name=hello&foo.tm=hello
+Foo.sub.name=hello&foo.tm=hello
 
-	struct Foo {
-		Tm string `dsn:"query.tm"`
-		Sub struct {
-			Name string `dsn:"query.name"`
-		} `dsn:"query.sub"`
-	}
+Struct Foo {
+Tm string `dsn:"query.tm"`
+Sub struct {
+Name string `dsn:"query.name"`
+} `dsn:"query.sub"`
+}
 
-默认值: 通过 dsn:"key,[default]" 默认值暂时不支持数组
+Default: By dsn:"key,[default]" The default value does not support arrays for the time being.
 
-忽略 Bind: 通过 dsn:"-" 忽略 Bind
+Ignore Bind: Ignore Bind by dsn:"-"
 
-自定义 Bind: 可以同时实现 encoding.TextUnmarshaler 自定义 Bind 实现
+Custom Bind: can implement encoding.TextUnmarshaler custom Bind implementation at the same time
 
-Validate: 参考 https://github.com/go-playground/validator
+Validate: Reference https://github.com/go-playground/validator
 
-使用参考: example_test.go
+Use reference: example_test.go
 
-DSN 命名规范:
+DSN naming convention:
 
-没有历史遗留的情况下，尽量使用 Address, Network, Username, Password 等命名，代替之前的 Proto 和 Addr 等命名
+In the absence of historical legacy, try to use the names of Address, Network, Username, Password, etc. instead of the previous names such as Proto and Addr.
 
-Query 命名参考, 使用驼峰小写开头:
+Query naming reference, starting with a hump lowercase:
 
-	timeout 通用超时
-	dialTimeout 连接建立超时
-	readTimeout 读操作超时
-	writeTimeout 写操作超时
-	readsTimeout 批量读超时
-	writesTimeout 批量写超时
+Timeout universal timeout
+dialTimeout connection establishment timeout
+readTimeout read operation timed out
+writeTimeout write operation timed out
+readsTimeout batch read timeout
+writesTimeout batch write timeout
 */
 package dsn

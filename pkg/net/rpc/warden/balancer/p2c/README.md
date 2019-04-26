@@ -1,5 +1,5 @@
 #### warden/balancer/p2c
 
-##### 项目简介
+##### Project Description
 
-warden 的 Power of Two Choices (P2C)负载均衡模块，主要用于为每个RPC请求返回一个Server节点以供调用
+Warden's Power of Two Choices (P2C) load balancing module, which is mainly used to return a Server node for each RPC request for call

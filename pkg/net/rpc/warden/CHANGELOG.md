@@ -1,62 +1,62 @@
 ### net/rpc/warden
 ##### Version 1.1.12
-1. 设置 caller 为 no_user 如果 user 不存在
+1. Set caller to no_user if user does not exist
 
 ##### Version 1.1.12
-1. warden支持mirror传递
+1. warden supports mirror transfer
 
 ##### Version 1.1.11
-1. Validate RequestErr支持详细报错信息
+1. Validate RequestErr supports detailed error message
 
 ##### Version 1.1.10
-1. 默认读取环境中的color
+1. Default reading color in the environment
 
 ##### Version 1.1.9
-1. 增加NonBlock模式
+1. Increase the NonBlock mode
 
 ##### Version 1.1.8
-1. 新增appid mock
+1. Add appid mock
 
 ##### Version 1.1.7
-1. 兼容cpu为0和wrr dt为0的情况
+1. Compatible with cpu 0 and wrr dt 0
 
 ##### Version 1.1.6
-1. 修改caller传递和获取方式
-2. 添加error detail example
+1. Modify the way the caller is passed and retrieved
+2. Add error detail example
 
 ##### Version 1.1.5
-1. 增加server端json格式支持
+1. Increase server-side json format support
 
 ##### Version 1.1.4
-1. 判断reosvler.builder为nil之后再注册
+1. Check if reosvler.builder is nil and then register
 
 ##### Version 1.1.3
-1. 支持zone和clusters
+1. Support zone and clusters
 
 ##### Version 1.1.2
-1. 业务错误日志记为 WARN
+1. The business error log is recorded as WARN
 
 ##### Version 1.1.1
-1. server实现了返回cpu信息
+1. The server implements returning cpu information.
 
 ##### Version 1.1.0
-1. 增加ErrorDetail
-2. 修复日志打印error信息丢失问题
+1. Add ErrorDetail
+2. Repair log print error information loss problem
 
 ##### Version 1.0.3
-1. 给server增加keepalive参数
+1. Add keepalive parameters to the server
 
 ##### Version 1.0.2
 
-1. 替代默认的timoue，使用durtaion.Shrink()来传递context
-2. 修复peer.Addr为nil时会panic的问题
+1. Instead of the default timoue, use durtaion.Shrink() to pass the context
+2. Fix panic problem when peer.Addr is nil
 
 ##### Version 1.0.1
 
-1. 去除timeout的手动传递，改为使用grpc默认自带的grpc-timeout
-2. 获取server address改为使用call option的方式，去除对balancer的依赖
+1. Remove the manual delivery of timeout, and use the grpc-timeout that comes with grpc by default.
+2. Obtain the server address instead of using the call option to remove the dependency on the balancer.
 
 ##### Version 1.0.0
 
-1. 使用NewClient来新建一个RPC客户端，并默认集成trace、log、recovery、moniter拦截器
-2. 使用NewServer来新建一个RPC服务端，并默认集成trace、log、recovery、moniter拦截器
+1. Use NewClient to create a new RPC client, and integrate the trace, log, recovery, and moniter interceptors by default.
+2. Use NewServer to create a new RPC server, and integrate the trace, log, recovery, and moniter interceptors by default.

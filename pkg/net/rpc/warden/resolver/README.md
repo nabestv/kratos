@@ -1,5 +1,5 @@
 #### warden/resolver
 
-##### 项目简介
+##### Project Description
 
-warden 的 服务发现模块，用于从底层的注册中心中获取Server节点列表并返回给GRPC
+Warden's service discovery module for obtaining a list of Server nodes from the underlying registry and returning them to GRPC

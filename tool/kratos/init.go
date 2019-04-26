@@ -12,10 +12,10 @@ import (
 )
 
 const (
-	_textModeFastInit    = "一键初始化项目"
-	_textModeInteraction = "自定义项目参数"
-	_textYes             = "是"
-	_textNo              = "否"
+	_textModeFastInit    = "One-click initialization project"
+	_textModeInteraction = "Custom project parameters"
+	_textYes             = "Yes"
+	_textNo              = "No"
 )
 
 func runInit(ctx *cli.Context) (err error) {
@@ -28,10 +28,10 @@ func runInit(ctx *cli.Context) (err error) {
 		return nil
 	}
 	if err = create(); err != nil {
-		fmt.Println("项目初始化失败: ", err.Error())
+		fmt.Println("Project initialization failed: ", err.Error())
 		return nil
 	}
-	fmt.Printf("项目[%s]初始化成功！\n", p.Path)
+	fmt.Printf("The project [%s] was initialized successfully!\n", p.Path)
 	return nil
 }
 
@@ -43,7 +43,7 @@ func initPwd() (ok bool) {
 	ps := strings.Split(pwd, string(os.PathSeparator))
 	plen := len(ps)
 	if plen < 1 {
-		// 至少要有一个目录层级：项目名
+		// At least one directory level: project name
 		return
 	}
 	name := ps[plen-1]
@@ -82,7 +82,7 @@ func goPath() (gp string) {
 
 func interact() (err error) {
 	qs1 := &survey.Select{
-		Message: "你想怎么玩？",
+		Message: "How would you like to play?",
 		Options: []string{_textModeFastInit, _textModeInteraction},
 	}
 	var ans1 string
@@ -92,7 +92,7 @@ func interact() (err error) {
 	switch ans1 {
 	case _textModeFastInit:
 		if ok := initPwd(); !ok {
-			fmt.Println("快速初始化失败！")
+			fmt.Println("Fast initialization failed!")
 		}
 		return
 	case _textModeInteraction:
@@ -104,20 +104,20 @@ func interact() (err error) {
 		{
 			Name: "name",
 			Prompt: &survey.Input{
-				Message: "请输入项目名称：",
+				Message: "Please enter a project name: ",
 			},
 			Validate: survey.Required,
 		},
 		{
 			Name: "owner",
 			Prompt: &survey.Input{
-				Message: "请输入项目负责人：",
+				Message: "Please enter the project leader: ",
 			},
 		},
 		{
 			Name: "useGRPC",
 			Prompt: &survey.Select{
-				Message: "是否使用 gRPC ？",
+				Message: "Do you use gRPC? ",
 				Options: []string{_textYes, _textNo},
 				Default: _textNo,
 			},
@@ -125,7 +125,7 @@ func interact() (err error) {
 		{
 			Name: "here",
 			Prompt: &survey.Select{
-				Message: "是否当前目录？默认为GOPATH下",
+				Message: "Is the current directory? The default is GOPATH",
 				Options: []string{_textYes, _textNo},
 				Default: _textYes,
 			},

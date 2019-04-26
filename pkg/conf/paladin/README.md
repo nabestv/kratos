@@ -1,72 +1,72 @@
 #### paladin
 
-##### 项目简介
+##### Project Description
 
-paladin 是一个config SDK客户端，包括了file、mock几个抽象功能，方便使用本地文件或者sven配置中心，并且集成了对象自动reload功能。  
+Paladin is a config SDK client that includes several abstract functions for file and mock. It is convenient to use local files or sven configuration center, and integrates object auto reload function.
 
 
-local files:
+Local files:
 ```
-demo -conf=/data/conf/app/msm-servie.toml
+Demo -conf=/data/conf/app/msm-servie.toml
 // or dir
-demo -conf=/data/conf/app/
+Demo -conf=/data/conf/app/
 
 ```
-example:
+Example:
 ```
-type exampleConf struct {
-	Bool   bool
-	Int    int64
-	Float  float64
-	String string
+Type exampleConf struct {
+Bool bool
+Int int64
+Float float64
+String string
 }
 
-func (e *exampleConf) Set(text string) error {
-	var ec exampleConf
-	if err := toml.Unmarshal([]byte(text), &ec); err != nil {
-		return err
-	}
-	*e = ec
-	return nil
+Func (e *exampleConf) Set(text string) error {
+Var ec exampleConf
+If err := toml.Unmarshal([]byte(text), &ec); err != nil {
+Return err
+}
+*e = ec
+Return nil
 }
 
-func ExampleClient() {
-	if err := paladin.Init(); err != nil {
-		panic(err)
-	}
-	var (
-		ec   exampleConf
-		eo   exampleConf
-		m    paladin.TOML
-		strs []string
-	)
-	// config unmarshal
-	if err := paladin.Get("example.toml").UnmarshalTOML(&ec); err != nil {
-		panic(err)
-	}
-	// config setter
-	if err := paladin.Watch("example.toml", &ec); err != nil {
-        panic(err)
-    }
-	// paladin map
-	if err := paladin.Watch("example.toml", &m); err != nil {
-        panic(err)
-    }
-	s, err := m.Value("key").String()
-	b, err := m.Value("key").Bool()
-	i, err := m.Value("key").Int64()
-	f, err := m.Value("key").Float64()
-	// value slice
-	err = m.Value("strings").Slice(&strs)
-	// watch key
-	for event := range paladin.WatchEvent(context.TODO(), "key") {
-		fmt.Println(event)
-	}
+Func ExampleClient() {
+If err := paladin.Init(); err != nil {
+Panic(err)
+}
+Var (
+Ec exampleConf
+Eo exampleConf
+m paladin.TOML
+Strs []string
+)
+// config unmarshal
+If err := paladin.Get("example.toml").UnmarshalTOML(&ec); err != nil {
+Panic(err)
+}
+// config setter
+If err := paladin.Watch("example.toml", &ec); err != nil {
+        Panic(err)
+    }
+// paladin map
+If err := paladin.Watch("example.toml", &m); err != nil {
+        Panic(err)
+    }
+s, err := m.Value("key").String()
+b, err := m.Value("key").Bool()
+i, err := m.Value("key").Int64()
+f, err := m.Value("key").Float64()
+// value slice
+Err = m.Value("strings").Slice(&strs)
+// watch key
+For event := range paladin.WatchEvent(context.TODO(), "key") {
+fmt.Println(event)
+}
 }
 ```
 
-##### 编译环境
+##### Compiler Environment
 
-- **请只用 Golang v1.12.x 以上版本编译执行**
+- ** Please compile and execute only with Golang v1.12.x or higher**
 
-##### 依赖包
+##### Dependency package

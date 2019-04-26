@@ -1,87 +1,87 @@
 # Context
 
-以下是 blademaster 中 Context 对象结构体声明的代码片段：
+The following is a snippet of the Context object structure declaration in blademaster:
 ```go
 // Context is the most important part. It allows us to pass variables between
 // middleware, manage the flow, validate the JSON of a request and render a
 // JSON response for example.
-type Context struct {
-    context.Context
- 
-    Request *http.Request
-    Writer  http.ResponseWriter
- 
-    // flow control
-    index    int8
-    handlers []HandlerFunc
- 
-    // Keys is a key/value pair exclusively for the context of each request.
-    Keys map[string]interface{}
- 
-    Error error
- 
-    method string
-    engine *Engine
+Type Context struct {
+    context.Context
+ 
+    Request *http.Request
+    Writer http.ResponseWriter
+ 
+    // flow control
+    Index int8
+    Handlers []HandlerFunc
+ 
+    // Keys is a key/value pair exclusively for the context of each request.
+    Keys map[string]interface{}
+ 
+    Error error
+ 
+    Method string
+    Engine *Engine
 }
 ```
 
-* 首先可以看到 blademaster 的 Context 结构体中会 embed 一个标准库中的 Context 实例，bm 中的 Context 也是直接通过该实例来实现标准库中的 Context 接口。
-* Request 和 Writer 字段用于获取当前请求的与输出响应。
-* index 和 handlers 用于 handler 的流程控制；handlers 中存储了当前请求需要执行的所有 handler，index 用于标记当前正在执行的 handler 的索引位。
-* Keys 用于在 handler 之间传递一些额外的信息。
-* Error 用于存储整个请求处理过程中的错误。
-* method 用于检查当前请求的 Method 是否与预定义的相匹配。
-* engine 字段指向当前 blademaster 的 Engine 实例。
+* First, you can see that the Context structure of the blademaster will embed a Context instance in a standard library. The Context in bm also directly implements the Context interface in the standard library through this instance.
+The * Request and Writer fields are used to get the current request and output response.
+* index and handlers are used for process control of the handler; handlers store all the handlers that the current request needs to execute, and index is used to mark the index bits of the currently executing handler.
+* Keys are used to pass some extra information between handlers.
+* Error is used to store errors throughout the processing of the request.
+* method is used to check if the currently requested Method matches a predefined one.
+The *engine field points to the engine instance of the current blademaster.
 
-以下为 Context 中所有的公开的方法：
+The following are all public methods in the Context:
 ```go
-// 用于 Handler 的流程控制
-func (c *Context) Abort()
-func (c *Context) AbortWithStatus(code int)
-func (c *Context) Bytes(code int, contentType string, data ...[]byte)
-func (c *Context) IsAborted() bool
-func (c *Context) Next()
- 
-// 用户获取或者传递请求的额外信息
-func (c *Context) RemoteIP() (cip string)
-func (c *Context) Set(key string, value interface{})
-func (c *Context) Get(key string) (value interface{}, exists bool)
-  
-// 用于校验请求的 payload
-func (c *Context) Bind(obj interface{}) error
-func (c *Context) BindWith(obj interface{}, b binding.Binding) error
-  
-// 用于输出响应
-func (c *Context) Render(code int, r render.Render)
-func (c *Context) Redirect(code int, location string)
-func (c *Context) Status(code int)
-func (c *Context) String(code int, format string, values ...interface{})
-func (c *Context) XML(data interface{}, err error)
-func (c *Context) JSON(data interface{}, err error)
-func (c *Context) JSONMap(data map[string]interface{}, err error)
-func (c *Context) Protobuf(data proto.Message, err error)
+// Process control for Handler
+Func (c *Context) Abort()
+Func (c *Context) AbortWithStatus(code int)
+Func (c *Context) Bytes(code int, contentType string, data ...[]byte)
+Func (c *Context) IsAborted() bool
+Func (c *Context) Next()
+ 
+// User gets or passes additional information requested
+Func (c *Context) RemoteIP() (cip string)
+Func (c *Context) Set(key string, value interface{})
+Func (c *Context) Get(key string) (value interface{}, exists bool)
+  
+// payload used to verify the request
+Func (c *Context) Bind(obj interface{}) error
+Func (c *Context) BindWith(obj interface{}, b binding.Binding) error
+  
+// for output response
+Func (c *Context) Render(code int, r render.Render)
+Func (c *Context) Redirect(code int, location string)
+Func (c *Context) Status(code int)
+Func (c *Context) String(code int, format string, values ​​...interface{})
+Func (c *Context) XML(data interface{}, err error)
+Func (c *Context) JSON(data interface{}, err error)
+Func (c *Context) JSONMap(data map[string]interface{}, err error)
+Func (c *Context) Protobuf(data proto.Message, err error)
 ```
 
-所有方法基本上可以分为三类：
+All methods can basically be divided into three categories:
 
-* 流程控制
-* 额外信息传递
-* 请求处理
-* 响应处理
+* Process control
+* Additional information transfer
+* Request processing
+* Response processing
 
 # Handler
 
 ![handler](/doc/img/bm-handlers.png)
 
-初次接触 blademaster 的用户可能会对其 Handler 的流程处理产生不小的疑惑，实际上 bm 对 Handler 对处理非常简单。  
-将 Router 模块中预先注册的中间件与其他 Handler 合并，放入 Context 的 handlers 字段，并将 index 置 0，然后通过 Next() 方法一个个执行下去。  
-部分中间件可能想要在过程中中断整个流程，此时可以使用 Abort() 方法提前结束处理。  
-有些中间件还想在所有 Handler 执行完后再执行部分逻辑，此时可以在自身 Handler 中显式调用 Next() 方法，并将这些逻辑放在调用了 Next() 方法之后。  
+Users who first contact Blademaster may have a lot of confusion about the processing of their Handlers. In fact, bm is very simple to handle Handler pairs.
+Combine the pre-registered middleware in the Router module with other Handlers, put them into the handlers field of the Context, set the index to 0, and execute them one by one through the Next() method.
+Some middleware may want to interrupt the entire process in the process, in which case the processing can be terminated early using the Abort() method.
+Some middleware also wants to execute some logic after all Handlers have been executed. In this case, you can explicitly call the Next() method in your own Handler and place the logic after calling the Next() method.
 
-# 扩展阅读
+# Extended reading
 
-[bm快速开始](blademaster-quickstart.md) [bm中间件](blademaster-mid.md)  [bm基于pb生成](blademaster-pb.md)
+[bm quick start] (blademaster-quickstart.md) [bm middleware] (blademaster-mid.md) [bm based on pb generation] (blademaster-pb.md)
 
 -------------
 
-[文档目录树](summary.md)
+[document directory tree] (summary.md)

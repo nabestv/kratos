@@ -1,5 +1,5 @@
 # pool
 
-## 项目简介
+## Project Description
 
-通用连接池实现
+Universal connection pool implementation

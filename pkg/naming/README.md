@@ -1,14 +1,14 @@
 # naming
 
-## 项目简介
+## Project Description
 
-服务发现、服务注册相关的SDK集合
+Service discovery, service registration related SDK collection
 
-## 现状
+## status quo
 
-目前默认实现了B站开源的[Discovery](https://github.com/bilibili/discovery)服务注册与发现SDK。
-但在使用之前，请确认discovery服务部署完成，并将该discovery.go内`fixConfig`方法的默认配置进行完善。
+Currently, the B-station open source [Discovery] (https://github.com/bilibili/discovery) service registration and discovery SDK is implemented by default.
+However, before using it, please confirm that the discovery service deployment is complete and complete the default configuration of the `fixConfig` method in the discovery.go.
 
-## 使用
+## Use
 
-可实现`naming`内的`Builder`&`Resolver`&`Registry`接口用于服务注册与发现，比如B站内部还实现了zk的。
+The `Builder` & `Resolver`&`Registry` interface in `naming` can be implemented for service registration and discovery. For example, the Z station also implements zk.

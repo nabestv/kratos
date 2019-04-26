@@ -60,7 +60,7 @@ demoExpire = "24h"
 	_tplChangeLog = `## {{.Name}}
 
 ### v1.0.0
-1. 上线功能xxx
+1. Online function xxx
 `
 	_tplMain = `package main
 
@@ -217,7 +217,7 @@ func (d *Dao) pingRedis(ctx context.Context) (err error) {
 `
 	_tplReadme = `# {{.Name}}
 
-## 项目简介
+## Project Description
 1.
 `
 	_tplService = `package service
@@ -364,35 +364,35 @@ func ping(ctx *bm.Context) {
 // example for http request handler.
 func howToStart(c *bm.Context) {
 	k := &model.Kratos{
-		Hello: "Golang 大法好 !!!",
+		Hello: "Golang is good!",
 	}
 	c.JSON(k, nil)
 }
 
 `
-	_tplAPIProto = `// 定义项目 API 的 proto 文件 可以同时描述 gRPC 和 HTTP API
-// protobuf 文件参考:
-//  - https://developers.google.com/protocol-buffers/
-//  - TODO：待补充文档URL
-// protobuf 生成 HTTP 工具:
-//  - TODO：待补充文档URL
+	_tplAPIProto = `// The proto file that defines the project API can describe both gRPC and HTTP API
+// protobuf file reference:
+// - https://developers.google.com/protocol-buffers/
+// - TODO: URL to be added
+// protobuf generates an HTTP tool:
+// - TODO: URL to be added
 // gRPC Golang Model:
-//  - TODO：待补充文档URL
+// - TODO: URL to be added
 // gRPC Golang Warden Gen:
-//  - TODO：待补充文档URL
-// gRPC http 调试工具(无需pb文件):
-//  - TODO：待补充文档URL
-// grpc 命令行调试工具(无需pb文件):
-//  - TODO：待补充文档URL
-syntax = "proto3";
+// - TODO: URL to be added
+// gRPC http debugging tool (no pb file required):
+// - TODO: URL to be added
+// grpc command line debugging tool (no pb file required):
+// - TODO: URL to be added
+Syntax = "proto3";
 
 import "github.com/gogo/protobuf/gogoproto/gogo.proto";
 import "google/protobuf/empty.proto";
 
-// package 命名使用 {appid}.{version} 的方式, version 形如 v1, v2 ..
+// package Named Use {appid}.{version} The way, version Shaped like v1, v2 ..
 package demo.service.v1;
 
-// NOTE: 最后请删除这些无用的注释 (゜-゜)つロ 
+// NOTE: Finally, please delete these useless comments (゜-゜)つロ 
 
 option go_package = "api";
 // do not generate getXXX() method 
@@ -408,8 +408,8 @@ message HelloReq {
 `
 	_tplAPIGenerate = `package api
 
-// 生成 gRPC 代码
-//go:generate kratos tool kprotoc
+// Generate gRPC code
+// go:generate kratos tool kprotoc
 `
 	_tplModel = `package model
 

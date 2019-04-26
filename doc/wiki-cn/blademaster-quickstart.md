@@ -1,68 +1,68 @@
-# 准备工作
+# Ready to work
 
-推荐使用[kratos tool](kratos-tool.md)快速生成项目，如我们生成一个叫`kratos-demo`的项目。
+It is recommended to use [kratos tool] (kratos-tool.md) to quickly generate projects, such as we generate a project called `kratos-demo`.
 
-生成目录结构如下：
+The generated directory structure is as follows:
 ```
 ├── CHANGELOG.md
 ├── CONTRIBUTORS.md
 ├── LICENSE
 ├── README.md
 ├── cmd
-│   ├── cmd
-│   └── main.go
+│ ├── cmd
+│ └── main.go
 ├── configs
-│   ├── application.toml
-│   ├── grpc.toml
-│   ├── http.toml
-│   ├── log.toml
-│   ├── memcache.toml
-│   ├── mysql.toml
-│   └── redis.toml
+│ ├── application.toml
+│ ├── grpc.toml
+│ ├── http.toml
+│ ├── log.toml
+│ ├── memcache.toml
+│ ├── mysql.toml
+│ └── redis.toml
 ├── go.mod
 ├── go.sum
 └── internal
-    ├── dao
-    │   └── dao.go
-    ├── model
-    │   └── model.go
-    ├── server
-    │   └── http
-    │       └── http.go
-    └── service
-        └── service.go
+    ├── dao
+    │ └── dao.go
+    ├──model
+    │ └── model.go
+    ├── server
+    │ └── http
+    │ └── http.go
+    └── service
+        └── service.go
 ```
 
-# 路由
+# Routing
 
-创建项目成功后，进入`internal/server/http`目录下，打开`http.go`文件，其中有默认生成的`blademaster`模板。其中：
+After creating the project successfully, go to the `internal/server/http` directory and open the `http.go` file, which has the default generated `blademaster` template. among them:
 ```go
-engine = bm.DefaultServer(hc.Server)
+Engine = bm.DefaultServer(hc.Server)
 initRouter(engine)
-if err := engine.Start(); err != nil {
-    panic(err)
+If err := engine.Start(); err != nil {
+    Panic(err)
 }
 ```
-是bm默认创建的`engine`及启动代码，我们看`initRouter`初始化路由方法，默认实现了：
+Is the default `engine` and startup code created by bm. Let's look at `initRouter` to initialize the routing method. The default implementation is:
 ```go
-func initRouter(e *bm.Engine) {
-	e.Ping(ping) // engine自带的"/ping"接口，用于负载均衡检测服务健康状态
-	g := e.Group("/kratos-demo") // e.Group 创建一组 "/kratos-demo" 起始的路由组
-	{
-		g.GET("/start", howToStart) // g.GET 创建一个 "kratos-demo/start" 的路由，默认处理Handler为howToStart方法
-	}
+Func initRouter(e *bm.Engine) {
+e.Ping(ping) // The engine's own "/ping" interface is used for load balancing detection service health status.
+g := e.Group("/kratos-demo") // e.Group Create a set of routing groups starting with "/kratos-demo"
+{
+g.GET("/start", howToStart) // g.GET Create a "kratos-demo/start" route. By default, the Handler is the howToStart method.
+}
 }
 ```
 
-bm的handler方法，结构如下：
+The bm handler method has the following structure:
 ```go
-func howToStart(c *bm.Context) // handler方法默认传入bm的Context对象
+Func howToStart(c *bm.Context) // The handler method passes the bm Context object by default.
 ```
 
-# 扩展阅读
+# Extended reading
 
-[bm模块说明](blademaster-mod.md) [bm中间件](blademaster-mid.md)  [bm基于pb生成](blademaster-pb.md)
+[bm module description] (blademaster-mod.md) [bm middleware] (blademaster-mid.md) [bm based on pb generation] (blademaster-pb.md)
 
 -------------
 
-[文档目录树](summary.md)
+[document directory tree] (summary.md)

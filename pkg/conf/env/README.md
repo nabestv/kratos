@@ -1,5 +1,5 @@
 # env
 
-## 项目简介
+## Project Description
 
-全局公用环境变量
+Global public environment variable

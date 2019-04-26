@@ -1,7 +1,7 @@
 # cache/redis
 
-##### 项目简介
-1. 提供redis接口
+##### Project Description
+1. Provide redis interface
 
-#### 使用方式
-请参考doc.go
+#### How to use
+Please refer to doc.go

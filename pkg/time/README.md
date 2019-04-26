@@ -1,5 +1,5 @@
 # time
 
-## 项目简介
+## Project Description
 
-Kratos的时间模块，主要用于mysql时间戳转换、配置文件读取并转换、Context超时时间比较
+Kratos time module, mainly used for mysql timestamp conversion, configuration file read and conversion, Context timeout comparison

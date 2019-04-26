@@ -1,14 +1,14 @@
 # kratos
 
-## 项目简介
-kratos 工具
+## Project Description
+kratos tool
 
-## 安装
+## Installation
 
 `go get -u github.com/bilibili/kratos/tool/kratos`
 
-## 使用说明
+## Instructions for use
 
-### 参数
+### Parameters
 
 kratos -h

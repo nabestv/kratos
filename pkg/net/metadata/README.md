@@ -1,5 +1,5 @@
 # net/metadata
 
-## 项目简介
+## Project Description
 
-用于储存各种元信息
+Used to store various meta information

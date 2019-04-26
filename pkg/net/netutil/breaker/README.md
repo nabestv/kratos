@@ -1,21 +1,21 @@
 #### breaker
 
-##### 项目简介
-1. 提供熔断器功能，供各种client（如rpc、http、msyql）等进行熔断
-2. 提供Go方法供业务在breaker熔断前后进行回调处理
+##### Project Description
+1. Provide fuse function for various clients (such as rpc, http, msyql) to blow
+2. Provide a Go method for the service to callback before and after the breaker blows
 
-##### 配置说明
-> 1. NewGroup(name string,c *Config)当c==nil时则采用默认配置
-> 2. 可通过breaker.Init(c *Config)替换默认配置
-> 3. 可通过group.Reload(c *Config)进行配置更新
-> 4. 默认配置如下所示：
-    _conf = &Config{
-            Window:  xtime.Duration(3 * time.Second),
-            Sleep:   xtime.Duration(100 * time.Millisecond),
-            Bucket:  10,
-            Ratio:   0.5,
-            Request: 100,
-    }
+##### Configuration instructions
+> 1. NewGroup(name string,c *Config) uses the default configuration when c==nil
+> 2. The default configuration can be replaced by breaker.Init(c *Config)
+> 3. Configuration update via group.Reload(c *Config)
+> 4. The default configuration is as follows:
+     _conf = &Config{
+             Window: xtime.Duration(3 * time.Second),
+             Sleep: xtime.Duration(100 * time.Millisecond),
+             Bucket: 10,
+             Ratio: 0.5,
+             Request: 100,
+     }
 
-##### 测试
-1. 执行当前目录下所有测试文件，测试所有功能
+##### Testing
+1. Execute all test files in the current directory and test all functions.

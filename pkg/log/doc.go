@@ -1,51 +1,52 @@
-/*Package log 是kratos日志库.
+/*
+Package log is the kratos log library.
 
-一、主要功能：
+First, the main function:
 
-	1. 日志打印到本地
-	2. 日志打印到标准输出
-	3. verbose日志实现，参考glog实现，可通过设置不同verbose级别，默认不开启
+1. The log is printed to the local
+2. Log print to standard output
+3. verbose log implementation. Refer to the glog implementation. You can set different verbose levels. The default is not enabled.
 
-二、日志配置
+Second, the log configuration
 
-1. 默认配置
+Default configuration
 
-	目前日志已经实现默认配置。可以直接使用以下方式：
-	log.Init(nil)
+The current log has implemented the default configuration. You can use the following methods directly:
+log.Init(nil)
 
-2. 启动参数 or 环境变量
+2. Start parameter or environment variable
 
-	启动参数		环境变量		说明
-	log.stdout	LOG_STDOUT	是否开启标准输出
-	log.dir		LOG_DIR		文件日志路径
-	log.v		LOG_V		verbose日志级别
-	log.module	LOG_MODULE	可单独配置每个文件的verbose级别：file=1,file2=2
-	log.filter	LOG_FILTER	配置需要过滤的字段：field1,field2
+Startup parameters Environment variable Description
+Log.stdout LOG_STDOUT Whether to enable standard output
+Log.dir LOG_DIR file log path
+Log.v LOG_V verbose log level
+Log.module LOG_MODULE The verbose level of each file can be configured separately: file=1, file2=2
+Log.filter LOG_FILTER Configure the fields to be filtered: field1,field2
 
-3. 配置文件
-但是如果有特殊需要可以走一下格式配置：
-	[log]
-		family = "xxx-service"
-		dir = "/data/log/xxx-service/"
-		stdout = true
-		vLevel = 3
-		filter = ["fileld1", "field2"]
-		[log.module]
-			"dao_user" = 2
-			"servic*" = 1
+3. Configuration file
+But if you have special needs, you can take a look at the format configuration:
+[log]
+Family = "xxx-service"
+Dir = "/data/log/xxx-service/"
+Stdout = true
+vLevel = 3
+Filter = ["fileld1", "field2"]
+[log.module]
+"dao_user" = 2
+"servic*" = 1
 
-三、配置说明
+Third, the configuration instructions
 
 1.log
 
-	family		项目名，默认读环境变量$APPID
-	studout		标准输出，prod环境不建议开启
-	filter		配置需要过滤掉的字段，以“***”替换
-	dir		文件日志地址，prod环境不建议开启
-	v		开启verbose级别日志，可指定全局级别
+Family project name, default read environment variable $APPID
+Studout standard output, prod environment is not recommended to open
+Filter configures the fields that need to be filtered out and replaces them with "***"
+Dir file log address, prod environment is not recommended to open
+v Enable the verbose level log to specify the global level.
 
 2. log.module
 
-	可单独配置每个文件的verbose级别
+The verbose level of each file can be configured separately
 */
 package log

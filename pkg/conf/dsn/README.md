@@ -1,5 +1,5 @@
 # dsn
 
-## 项目简介
+## Project Description
 
-通用数据源地址解析
+Generic data source address resolution

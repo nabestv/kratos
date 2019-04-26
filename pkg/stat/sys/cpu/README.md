@@ -2,6 +2,6 @@
 
 System Information
 
-## 项目简介
+## Project Description
 
-获取Linux平台下的系统信息，包括cpu主频、cpu使用率等
+Obtain system information under the Linux platform, including cpu frequency, cpu usage, etc.

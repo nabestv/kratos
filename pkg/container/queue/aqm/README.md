@@ -1,5 +1,5 @@
 # aqm
 
-## 项目简介
+## Project Description
 
-队列管理算法
+Queue management algorithm

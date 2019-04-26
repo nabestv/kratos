@@ -1,31 +1,31 @@
 // Package errgroup provides synchronization, error propagation, and Context
-// errgroup 包为一组子任务的 goroutine 提供了 goroutine 同步,错误取消功能.
+// The errgroup package provides goroutine synchronization and error cancellation for a set of subtask goroutines.
 //
-//errgroup 包含三种常用方式
+// Errgroup contains three common ways
 //
-//1、直接使用 此时不会因为一个任务失败导致所有任务被 cancel:
+//1、Direct use At this point, all tasks will not be canceled because of a task failure:
 //		g := &errgroup.Group{}
 //		g.Go(func(ctx context.Context) {
-//			// NOTE: 此时 ctx 为 context.Background()
+//			// NOTE: At this point ctx is context.Background()
 //			// do something
 //		})
 //
-//2、WithContext 使用 WithContext 时不会因为一个任务失败导致所有任务被 cancel:
+//2、WithContext When using WithContext does not cause all tasks to be canceled because of a task failure:
 //		g := errgroup.WithContext(ctx)
 //		g.Go(func(ctx context.Context) {
-//			// NOTE: 此时 ctx 为 errgroup.WithContext 传递的 ctx
+//			// NOTE: At this point ctx is ctx passed by errgroup.WithContext
 //			// do something
 //		})
 //
-//3、WithCancel 使用 WithCancel 时如果有一个人任务失败会导致所有*未进行或进行中*的任务被 cancel:
+//3、WithCancel When using WithCancel, if a person fails, all *not-executed or in-progress* tasks will be canceled:
 //		g := errgroup.WithCancel(ctx)
 //		g.Go(func(ctx context.Context) {
-//			// NOTE: 此时 ctx 是从 errgroup.WithContext 传递的 ctx 派生出的 ctx
+//			// NOTE: At this point ctx is a ctx derived from ctx passed by errgroup.WithContext
 //			// do something
 //		})
 //
-//设置最大并行数 GOMAXPROCS 对以上三种使用方式均起效
-//NOTE: 由于 errgroup 实现问题,设定 GOMAXPROCS 的 errgroup 需要立即调用 Wait() 例如:
+//Set the maximum number of parallels GOMAXPROCS works for all three modes of use
+//NOTE: Due to errgroup implementation issues, setting errgroup for GOMAXPROCS requires immediate calls to Wait() :
 //
 //		g := errgroup.WithCancel(ctx)
 //		g.GOMAXPROCS(2)
@@ -41,7 +41,7 @@
 //		g.Go(func(ctx context.Context) {
 //			fmt.Println("task3")
 //		})
-//		// NOTE: 此时设置的 GOMAXPROCS 为2, 添加了三个任务 task1, task2, task3 此时 task3 是不会运行的!
-//		// 只有调用了 Wait task3 才有运行的机会
-//		g.Wait() // task3 运行
+//		// NOTE: The GOMAXPROCS set at this time is 2, and three tasks have been added. task1, task2, task3 At this time, task3 will not run!
+//		// There is only a chance to run if Wait task3 is called.
+//		g.Wait() // Task3 running
 package errgroup

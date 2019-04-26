@@ -22,9 +22,9 @@ func toolAction(c *cli.Context) (err error) {
 			updateTime := t.BuildTime.Format("2006/01/02")
 			fmt.Printf("%s%s: %s %s (%s) [%s]\n", color.HiMagentaString(t.Name), getNotice(t), color.HiCyanString(t.Summary), t.URL, t.Author, updateTime)
 		}
-		fmt.Println("\n执行 install 安装程序  如: kratos tool install demo")
-		fmt.Println("执行 工具名称 运行程序 如: kratos tool demo")
-		fmt.Println("\n安装全部工具:  kratos tool install all")
+		fmt.Println("\nExecute the install installer such as: kratos tool install demo")
+		fmt.Println("Execution tool name Run the program such as: kratos tool demo")
+		fmt.Println("\nInstall all tools: kratos tool install all")
 		return
 	}
 	if c.Args().First() == "install" {
@@ -51,7 +51,7 @@ func toolAction(c *cli.Context) (err error) {
 			return
 		}
 	}
-	fmt.Fprintf(os.Stderr, "还未安装 %s\n", name)
+	fmt.Fprintf(os.Stderr, "%s\n not installed yet", name)
 	return
 }
 
@@ -62,7 +62,7 @@ func upgradeAction(c *cli.Context) error {
 
 func install(name string) {
 	if name == "" {
-		fmt.Fprintf(os.Stderr, color.HiRedString("请填写要安装的工具名称\n"))
+		fmt.Fprintf(os.Stderr, color.HiRedString("Please fill in the name of the tool to be installed\n"))
 		return
 	}
 	for _, t := range toolIndexs {
@@ -71,7 +71,7 @@ func install(name string) {
 			return
 		}
 	}
-	fmt.Fprintf(os.Stderr, color.HiRedString("安装失败 找不到 %s\n", name))
+	fmt.Fprintf(os.Stderr, color.HiRedString("Installation failed %s\n not found", name))
 	return
 }
 
@@ -87,11 +87,11 @@ func getNotice(t *Tool) (notice string) {
 	if !t.supportOS() || t.Install == "" {
 		return
 	}
-	notice = color.HiGreenString("(未安装)")
+	notice = color.HiGreenString("(Not Installed)")
 	if f, err := os.Stat(t.toolPath()); err == nil {
-		notice = color.HiBlueString("(已安装)")
+		notice = color.HiBlueString("(Installed)")
 		if t.BuildTime.After(f.ModTime()) {
-			notice = color.RedString("(有更新)")
+			notice = color.RedString("(updated)")
 		}
 	}
 	return
@@ -115,7 +115,7 @@ func runTool(name, dir, cmd string, args []string) (err error) {
 	}
 	if err = toolCmd.Run(); err != nil {
 		if e, ok := err.(*exec.ExitError); !ok || !e.Exited() {
-			fmt.Fprintf(os.Stderr, "运行 %s 出错: %v\n", name, err)
+			fmt.Fprintf(os.Stderr, "Error running %s: %v\n", name, err)
 		}
 	}
 	return
@@ -143,13 +143,13 @@ func (t Tool) supportOS() bool {
 
 func (t Tool) install() {
 	if t.Install == "" {
-		fmt.Fprintf(os.Stderr, color.RedString("%s: 自动安装失败 详情请查看文档 %s\n", t.Name, t.URL))
+		fmt.Fprintf(os.Stderr, color.RedString("%s: Automatic installation failed See the documentation %s\n for details", t.Name, t.URL))
 		return
 	}
 	cmds := strings.Split(t.Install, " ")
 	if len(cmds) > 0 {
 		if err := runTool(t.Name, path.Dir(t.toolPath()), cmds[0], cmds[1:]); err == nil {
-			color.Green("%s: 安装成功!", t.Name)
+			color.Green("%s: Installation is successful!", t.Name)
 		}
 	}
 }
