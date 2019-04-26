@@ -1,6 +1,6 @@
 # Kratos
 
-Kratos is an open source set of Go microservices framework developed by [bilibili](https://www.bilibili.com) that contain a number of microservices, related frameworks, and tools. It mainly includes the following components:
+Kratos is an open source set of GO microservice frameworks developed by [bilibili](https://www.bilibili.com) that contain a number of microservices, related frameworks, and tools. It mainly includes the following components:
 
 * [http framework blademaster(bm)](doc/wiki-cn/blademaster.md): based on [gin](https://github.com/gin-gonic/gin) secondary development, with fast and flexible features It is convenient to develop middleware to handle general or special logic, and the base library implements log&trace by default.
 * [gRPC framework warden](doc/wiki-cn/warden.md): Based on the official gRPC package, default [discovery](https://github.com/bilibili/discovery) for service registration discovery, and wrr and p2c (default) load balancing.
