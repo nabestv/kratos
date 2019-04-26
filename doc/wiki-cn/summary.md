@@ -1,8 +1,8 @@
 # Summary
 
-* [Introduction] (README.md)
-   * [Quick Start] (quickstart.md)
-   * [Case] (https://github.com/bilibili/kratos-demo)
+* [Introduction](README.md)
+   * [Quick Start](quickstart.md)
+   * [Case](https://github.com/bilibili/kratos-demo)
 * [http blademaster](blademaster.md)
    * [bm quickstart](blademaster-quickstart.md)
    * [bm module](blademaster-mod.md)
