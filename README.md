@@ -15,7 +15,7 @@ We are committed to providing a complete microservices R&D experience. After int
 # Quick Start
 
 ```shell
-go get -u github.com/bilibili/kratos/tool/kratos
+go get -u github.com/nabestv/kratos/tool/kratos
 kratos init
 ```
 
