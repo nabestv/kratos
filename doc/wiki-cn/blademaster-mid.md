@@ -1,4 +1,4 @@
-# background
+# Background
 
 Based on the bm-based handler mechanism, you can customize many middleware (middleware) for general-purpose business processing, such as user login authentication. Next, take authentication as an example to illustrate the writing and usage of middleware.
 
@@ -105,7 +105,7 @@ e.Start()
 
 # Extended reading
 
-[bm quick start] (blademaster-quickstart.md) [bm module description] (blademaster-mod.md) [bm based on pb generation] (blademaster-pb.md)
+[bm quick start](blademaster-quickstart.md) [bm module description](blademaster-mod.md) [bm based on pb generation](blademaster-pb.md)
 
 -------------
 
