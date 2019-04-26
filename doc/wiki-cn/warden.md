@@ -1,4 +1,4 @@
-# background
+# Background
 
 We need a unified rpc service, and after the selection discussion, we decided to use the mature cross-language gRPC directly.
 
@@ -8,7 +8,7 @@ We need a unified rpc service, and after the selection discussion, we decided to
 * Open your own service registration discovery system [discovery](https://github.com/bilibili/discovery)
 * A smoother and more reliable load balancing algorithm
   
-# interceptor
+# Interceptor
 
 gRPC exposes two interceptor interfaces, namely:
 
@@ -19,7 +19,7 @@ Based on the two interceptors, you can customize the package code of the common 
 
 [warden interceptor](warden-mid.md)
 
-#服务发现
+# Service Discovery
 
 gRPC exposes the service discovery interface `resolver.Resolver`, `warden/resolver/resolver.go` implements the interface and implements `Fetch` based on the `Resolver` interface in `pkg/naming/naming.go`. Watch` and other operations.
 
@@ -34,7 +34,7 @@ If you want to use non-discovery (https://github.com/bilibili/discovery), please
 
 [warden service discovery](warden-resolver.md)
 
-#Load balancing
+# Load balancing
 
 The two algorithms `wrr` and `p2c` are implemented, and `p2c` is used by default.
 
