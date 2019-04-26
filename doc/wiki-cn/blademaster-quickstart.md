@@ -61,8 +61,8 @@ Func howToStart(c *bm.Context) // The handler method passes the bm Context objec
 
 # Extended reading
 
-[bm module description] (blademaster-mod.md) [bm middleware] (blademaster-mid.md) [bm based on pb generation] (blademaster-pb.md)
+[bm module description](blademaster-mod.md) [bm middleware](blademaster-mid.md) [bm based on pb generation](blademaster-pb.md)
 
 -------------
 
-[document directory tree] (summary.md)
+[document directory tree](summary.md)
